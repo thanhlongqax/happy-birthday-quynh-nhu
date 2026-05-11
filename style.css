@@ -108,3 +108,7 @@ html {
     50%{ transform: scale(1.08); opacity: 1; }
     100%{ transform: scale(1); opacity: .7; }
 }
+
+html, body{
+    overflow-x: hidden;
+}

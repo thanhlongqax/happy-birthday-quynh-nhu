@@ -244,6 +244,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ===== MOBILE SAFE AUTO SCROLL =====
 
+// window.addEventListener("load", () => {
+
+//     let isPaused = false;
+
+//     function autoScroll() {
+
+//         if (!isPaused) {
+
+//             window.scrollTo(
+//                 0,
+//                 window.scrollY + 1
+//             );
+
+//             // quay lại đầu
+//             if (
+//                 window.innerHeight + window.scrollY
+//                 >= document.body.scrollHeight - 2
+//             ) {
+
+//                 window.scrollTo({
+//                     top: 0,
+//                     behavior: "smooth"
+//                 });
+//             }
+//         }
+
+//         requestAnimationFrame(autoScroll);
+//     }
+
+//     autoScroll();
+
+//     // tạm dừng khi user chạm
+//     ["touchstart", "wheel"].forEach(event => {
+
+//         document.addEventListener(event, () => {
+
+//             isPaused = true;
+
+//             setTimeout(() => {
+//                 isPaused = false;
+//             }, 5000);
+
+//         });
+
+//     });
+
+// });
+
+// ===== AUTO STORY SCROLL =====
+
 window.addEventListener("load", () => {
 
     let isPaused = false;
@@ -252,22 +302,23 @@ window.addEventListener("load", () => {
 
         if (!isPaused) {
 
-            window.scrollTo(
-                0,
-                window.scrollY + 1
-            );
+            // lướt xuống
+            window.scrollBy(0, 1);
 
-            // quay lại đầu
+            // nếu xuống cuối trang
             if (
-                window.innerHeight + window.scrollY
-                >= document.body.scrollHeight - 2
+                window.innerHeight + window.pageYOffset >=
+                document.body.offsetHeight - 5
             ) {
 
+                // quay lại đầu
                 window.scrollTo({
                     top: 0,
                     behavior: "smooth"
                 });
+
             }
+
         }
 
         requestAnimationFrame(autoScroll);
@@ -275,7 +326,7 @@ window.addEventListener("load", () => {
 
     autoScroll();
 
-    // tạm dừng khi user chạm
+    // pause khi user chạm
     ["touchstart", "wheel"].forEach(event => {
 
         document.addEventListener(event, () => {
@@ -286,7 +337,7 @@ window.addEventListener("load", () => {
                 isPaused = false;
             }, 5000);
 
-        });
+        }, { passive: true });
 
     });
 
