@@ -22,23 +22,21 @@
   <meta property="og:image" content="https://placehold.co/1200x630/87CEEB/FFFFFF?text=A+Surprise+For+[Name]">
 </head>
 
-
-
 <body>
-  <!-- Nhạc nền -->
-  <audio id="bg-music" autoplay loop style="display:none;">
+  <!-- Intro Screen -->
+  <div id="intro-screen">
+    <h1>❤️ Chạm để bắt đầu ❤️</h1>
+  </div>
+
+  <!-- Music -->
+  <audio id="bg-music" loop preload="auto">
     <source src="music/tonghopnhactrung.mp3" type="audio/mpeg">
-    Trình duyệt không hỗ trợ audio.
   </audio>
 <!-- Canvas for the falling cherry blossoms -->
 <canvas id="sakura-canvas"></canvas>
 
 <!-- Section 1: Hero Welcome -->
 <header class="story-section  h-screen relative flex items-center justify-center text-white overflow-hidden">
-  <!-- <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-[-1]">
-    <source src="img/sa.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video> -->
   <!-- Ảnh nền -->
   <img 
     src="img/z7813338243821_23e6083290ccfdfedf0148d324ab8f68.jpg" 

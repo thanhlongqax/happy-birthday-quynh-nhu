@@ -1,4 +1,40 @@
+// ===== START EXPERIENCE =====
+
+window.addEventListener("load", () => {
+
+    const intro = document.getElementById("intro-screen");
+    const music = document.getElementById("bg-music");
+
+    intro.addEventListener("click", async () => {
+
+        try {
+
+            await music.play();
+
+            intro.style.opacity = "0";
+
+            setTimeout(() => {
+                intro.style.display = "none";
+            }, 1000);
+
+        } catch(err) {
+
+            console.log(err);
+
+        }
+
+    });
+
+});
+
 document.addEventListener('DOMContentLoaded', function() {
+    // const music = document.getElementById("bg-music");
+
+    // const playMusic = () => {
+    //     music.play().catch(() => {});
+    // };
+
+    // playMusic();
     // --- Live Age Counter ---
     const birthDate = new Date('2008-05-11T00:00:00');
     const countdownElement = document.getElementById('countdown');
@@ -206,19 +242,3 @@ window.addEventListener("load", () => {
 
 });
 
-// ===== AUTO PLAY MUSIC =====
-
-window.addEventListener("DOMContentLoaded", () => {
-
-    const music = document.getElementById("bg-music");
-
-    const playMusic = () => {
-        music.play().catch(() => {});
-    };
-
-    playMusic();
-
-    // fallback mobile
-    document.addEventListener("click", playMusic, { once: true });
-
-});

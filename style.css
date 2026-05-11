@@ -83,3 +83,28 @@ html {
 .story-section {
     transition: all 1s ease;
 }
+/* ===== INTRO ===== */
+
+#intro-screen{
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom, #000000, #1a1a1a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    cursor: pointer;
+}
+
+#intro-screen h1{
+    color: white;
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+    text-align: center;
+}
+
+@keyframes pulse{
+    0%{ transform: scale(1); opacity: .7; }
+    50%{ transform: scale(1.08); opacity: 1; }
+    100%{ transform: scale(1); opacity: .7; }
+}
