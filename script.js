@@ -335,7 +335,7 @@ window.addEventListener("load", () => {
 
             setTimeout(() => {
                 isPaused = false;
-            }, 5000);
+            }, 1000);
 
         }, { passive: true });
 
