@@ -201,23 +201,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ===== AUTO SMOOTH STORY SCROLL =====
 
+// window.addEventListener("load", () => {
+
+//     let autoScroll;
+
+//     function startAutoScroll() {
+
+//         autoScroll = setInterval(() => {
+
+//             window.scrollBy({
+//                 top: 1,
+//                 behavior: "smooth"
+//             });
+
+//             // Khi xuống cuối trang thì quay lại đầu
+//             if (
+//                 window.innerHeight + window.scrollY
+//                 >= document.body.offsetHeight - 5
+//             ) {
+
+//                 window.scrollTo({
+//                     top: 0,
+//                     behavior: "smooth"
+//                 });
+//             }
+
+//         }, 30);
+//     }
+
+//     startAutoScroll();
+
+//     // Khi người dùng chạm chuột thì tạm dừng
+//     document.addEventListener("wheel", () => {
+//         clearInterval(autoScroll);
+
+//         setTimeout(() => {
+//             startAutoScroll();
+//         }, 5000);
+//     });
+
+// });
+
+// ===== MOBILE SAFE AUTO SCROLL =====
+
 window.addEventListener("load", () => {
 
-    let autoScroll;
+    let isPaused = false;
 
-    function startAutoScroll() {
+    function autoScroll() {
 
-        autoScroll = setInterval(() => {
+        if (!isPaused) {
 
-            window.scrollBy({
-                top: 1,
-                behavior: "smooth"
-            });
+            window.scrollTo(
+                0,
+                window.scrollY + 1
+            );
 
-            // Khi xuống cuối trang thì quay lại đầu
+            // quay lại đầu
             if (
                 window.innerHeight + window.scrollY
-                >= document.body.offsetHeight - 5
+                >= document.body.scrollHeight - 2
             ) {
 
                 window.scrollTo({
@@ -225,20 +268,26 @@ window.addEventListener("load", () => {
                     behavior: "smooth"
                 });
             }
+        }
 
-        }, 30);
+        requestAnimationFrame(autoScroll);
     }
 
-    startAutoScroll();
+    autoScroll();
 
-    // Khi người dùng chạm chuột thì tạm dừng
-    document.addEventListener("wheel", () => {
-        clearInterval(autoScroll);
+    // tạm dừng khi user chạm
+    ["touchstart", "wheel"].forEach(event => {
 
-        setTimeout(() => {
-            startAutoScroll();
-        }, 5000);
+        document.addEventListener(event, () => {
+
+            isPaused = true;
+
+            setTimeout(() => {
+                isPaused = false;
+            }, 5000);
+
+        });
+
     });
 
 });
-
